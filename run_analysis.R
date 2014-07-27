@@ -1,8 +1,8 @@
-# Load reshape2 to assist with the reshaping the dataset
-library(reshape2)
-
 # Set the working directory
 setwd("~/Downloads/Coursera/Getting and Cleaning Data/Course Project/")
+
+# Load reshape2 to assist with the reshaping the dataset
+library(reshape2)
 
 # File must be downloaded and unzipped from:
 # https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
