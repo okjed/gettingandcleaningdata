@@ -13,7 +13,11 @@ Rather than handle the install within the script and making assumptions on local
 for your R install, please make sure you have the library available.
 
 The script will need to be modified for your preferred working directory in the second
-line. The script handles the downloading, unzipping and utilizing data from:
+line:
+
+```setwd("~/Downloads/Coursera/Getting and Cleaning Data/Course Project/")```
+
+The script handles the downloading, unzipping and utilizing data from:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 From within R, you may ```source("run_analysis.R")``` and the script results in a tidy data set

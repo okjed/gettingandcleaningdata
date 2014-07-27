@@ -41,3 +41,43 @@ From the dataset's ```README.txt```:
 
 ## The Results
 The final dataset after tidying per the projects requirements is then saved as a comma separated file ```tidydata.csv```
+
+## Variable Descriptions
+The sourced data provides subject identifiers and activity labels which were remapped into the tidy data as ```Subject``` and ```Activity```. The 561 feature vector was ultimately narrowed to the averages per subject and activity of 66 elements from the original dataset, only those resulting from either mean() or std().
+
+```
+ [1] "AveragetBodyAcc-mean-X"           "AveragetBodyAcc-mean-Y"          
+ [3] "AveragetBodyAcc-mean-Z"           "AveragetBodyAcc-std-X"           
+ [5] "AveragetBodyAcc-std-Y"            "AveragetBodyAcc-std-Z"           
+ [7] "AveragetGravityAcc-mean-X"        "AveragetGravityAcc-mean-Y"       
+ [9] "AveragetGravityAcc-mean-Z"        "AveragetGravityAcc-std-X"        
+[11] "AveragetGravityAcc-std-Y"         "AveragetGravityAcc-std-Z"        
+[13] "AveragetBodyAccJerk-mean-X"       "AveragetBodyAccJerk-mean-Y"      
+[15] "AveragetBodyAccJerk-mean-Z"       "AveragetBodyAccJerk-std-X"       
+[17] "AveragetBodyAccJerk-std-Y"        "AveragetBodyAccJerk-std-Z"       
+[19] "AveragetBodyGyro-mean-X"          "AveragetBodyGyro-mean-Y"         
+[21] "AveragetBodyGyro-mean-Z"          "AveragetBodyGyro-std-X"          
+[23] "AveragetBodyGyro-std-Y"           "AveragetBodyGyro-std-Z"          
+[25] "AveragetBodyGyroJerk-mean-X"      "AveragetBodyGyroJerk-mean-Y"     
+[27] "AveragetBodyGyroJerk-mean-Z"      "AveragetBodyGyroJerk-std-X"      
+[29] "AveragetBodyGyroJerk-std-Y"       "AveragetBodyGyroJerk-std-Z"      
+[31] "AveragetBodyAccMag-mean"          "AveragetBodyAccMag-std"          
+[33] "AveragetGravityAccMag-mean"       "AveragetGravityAccMag-std"       
+[35] "AveragetBodyAccJerkMag-mean"      "AveragetBodyAccJerkMag-std"      
+[37] "AveragetBodyGyroMag-mean"         "AveragetBodyGyroMag-std"         
+[39] "AveragetBodyGyroJerkMag-mean"     "AveragetBodyGyroJerkMag-std"     
+[41] "AveragefBodyAcc-mean-X"           "AveragefBodyAcc-mean-Y"          
+[43] "AveragefBodyAcc-mean-Z"           "AveragefBodyAcc-std-X"           
+[45] "AveragefBodyAcc-std-Y"            "AveragefBodyAcc-std-Z"           
+[47] "AveragefBodyAccJerk-mean-X"       "AveragefBodyAccJerk-mean-Y"      
+[49] "AveragefBodyAccJerk-mean-Z"       "AveragefBodyAccJerk-std-X"       
+[51] "AveragefBodyAccJerk-std-Y"        "AveragefBodyAccJerk-std-Z"       
+[53] "AveragefBodyGyro-mean-X"          "AveragefBodyGyro-mean-Y"         
+[55] "AveragefBodyGyro-mean-Z"          "AveragefBodyGyro-std-X"          
+[57] "AveragefBodyGyro-std-Y"           "AveragefBodyGyro-std-Z"          
+[59] "AveragefBodyAccMag-mean"          "AveragefBodyAccMag-std"          
+[61] "AveragefBodyBodyAccJerkMag-mean"  "AveragefBodyBodyAccJerkMag-std"  
+[63] "AveragefBodyBodyGyroMag-mean"     "AveragefBodyBodyGyroMag-std"     
+[65] "AveragefBodyBodyGyroJerkMag-mean" "AveragefBodyBodyGyroJerkMag-std"
+```
+
