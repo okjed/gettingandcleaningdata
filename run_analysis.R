@@ -20,21 +20,17 @@ features <- read.table("UCI HAR Dataset/features.txt",header=FALSE,stringsAsFact
 # Read in the labels for the activities in the datasets
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt",header=FALSE,stringsAsFactors = FALSE)
 
-# Read in the training set data in order of subject and activity followed by a marker
-# for the origin of the data (TrainingSubject or TestingSubject).
+# Read in the training set data in order of subject and activity
 # Finally read in the 561 columns of data. Each read table is joined with a column bind.
 # Read and column bind the subject identifiers
 training <- read.table("UCI HAR Dataset/train/subject_train.txt",header=FALSE)
 # Read and column bind the activity identifiers
 training <- cbind(training,read.table("UCI HAR Dataset/train/y_train.txt",header=FALSE))
-# Assign TrainingSubject
-training$set="TrainingSubject"
 # Read and column bind the accelerometer results
 training <- cbind(training,read.table("UCI HAR Dataset/train/X_train.txt",header=FALSE))
 
 # Follow the above steps for the test subjects and data
 test <- read.table("UCI HAR Dataset/test/subject_test.txt",header=FALSE)
-test$set="TestSubject"
 test <- cbind(test,read.table("UCI HAR Dataset/test/y_test.txt",header=FALSE))
 test <- cbind(test,read.table("UCI HAR Dataset/test/X_test.txt",header=FALSE))
 
@@ -42,20 +38,24 @@ test <- cbind(test,read.table("UCI HAR Dataset/test/X_test.txt",header=FALSE))
 alldata <- rbind(training,test)
 
 # Clean up the column names and assign to the dataframe
-colnames(alldata) <- c("Subject","Activity","Set",features[,2])
+colnames(alldata) <- c("Subject","Activity",features[,2])
 
 # Apply the activity labels to the dataframe utilizing factor capabilities.
 alldata$Activity=factor(alldata$Activity,labels=activity_labels[,2])
 
 # Pick the columns of data we wish to keep in the tidy set (mean and std)
 meanandstd <- grep("mean\\(|std\\(",features[,2])
-tidymeanandstd <- alldata[,c(1:3,meanandstd+3)] # Adding 3 to shift past the subject,activity and set origin
+tidymeanandstd <- alldata[,c(1:2,meanandstd+2)] # Adding 2 to shift past the subject and activity
 
 # Melt the data for reshaping
-tidymeanandstd_m <- melt(tidymeanandstd,id.vars=1:3)
+tidymeanandstd_m <- melt(tidymeanandstd,id.vars=1:2)
 
 # Recast the melted data to create means for all variables
-tidyaverages <- dcast(tidymeanandstd_m, Subject+Activity+Set ~ variable,mean)
+tidyaverages <- dcast(tidymeanandstd_m, Subject+Activity ~ variable,mean)
+
+# Rename the columns to account for the purpose of the new numbers (averages) and eliminate the parantheses
+tidycolumnnames <- gsub("\\(\\)","",colnames(tidyaverages))
+colnames(tidyaverages)[3:ncol(tidyaverages)] <- gsub("^","Average",tidycolumnnames[3:length(tidycolumnnames)])
 
 # Save the tidy dataset
 write.csv(tidyaverages,"tidydata.csv")
