@@ -58,4 +58,4 @@ tidycolumnnames <- gsub("\\(\\)","",colnames(tidyaverages))
 colnames(tidyaverages)[3:ncol(tidyaverages)] <- gsub("^","Average",tidycolumnnames[3:length(tidycolumnnames)])
 
 # Save the tidy dataset
-write.csv(tidyaverages,"tidydata.csv")
+write.csv(tidyaverages,"tidydata.csv",row.names=FALSE)
